@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js</title>
+
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+
+    <style>
+        body{
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        p, h3, ul, ol{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav{
+            background: #ff9ed2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <p>Hello, vue :)</p>
+
+
+    <div id="books">
+       
+      
+        <div v-if="showBooksLists">
+           
+
+            <ol>
+                <li v-for="item in filteredBooks" :class="{ fav: item.isFav }" @click="toggleFav(item)">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.author }}</p>
+                    <img :src="item.img" :alt="item.title">
+
+                </li>
+            </ol>
+        </div>
+
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+    </div>
+
+
+    <script src="app.js" ></script>
+</body>
+</html>
